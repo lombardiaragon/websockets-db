@@ -2,12 +2,13 @@ const express = require("express");
 const { Server: HTTPServer } = require("http");
 const { Server: SocketServer } = require("socket.io");
 const {mysqlConfig}=require('./mysql/mysqlConfig.js')
+const {sqliteConfig}=require('./sqliteConfig.js')
 
 const handlebars=require('express-handlebars')
 
 const {DBcontainer}=require('./DBcontainer.js')
 const dbProds=new DBcontainer(mysqlConfig, "productos")
-const dbMsg=new DBcontainer(mysqlConfig, "mensajes")
+const dbMsg=new DBcontainer(sqliteConfig, "mensajes")
 
 
 const app=express()

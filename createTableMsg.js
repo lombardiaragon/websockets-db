@@ -1,7 +1,10 @@
-const {mysqlConfig}=require('./mysql/mysqlConfig')
-const Knex= require('knex') (mysqlConfig)
+const {sqliteConfig}=require('./sqliteConfig')
+const Knex= require('knex') (sqliteConfig)
 // const Knex=knex(mysqlConfig)
-
+Knex.schema.dropTableIfExists('mensajes')
+    .then(()=>
+    console.log('borrado')
+    )
 Knex.schema.createTable('mensajes',tabla=>{
     // - id clave primaria autoincremental no nula
     tabla.increments('id')
